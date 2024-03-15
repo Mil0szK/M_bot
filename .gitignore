@@ -1,0 +1,19 @@
+# Python related
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Project related
+telegram_M_bot/.env
+*.log
+*.sqlite
+*.db
+
+# Directories
+__pycache__/
+*.egg-info/
+
+# OS related
+.DS_Store
+Thumbs.db
