@@ -5,7 +5,7 @@
 __pycache__/
 
 # Project related
-telegram_M_bot/.env
+M_bot/.env
 *.log
 *.sqlite
 *.db
