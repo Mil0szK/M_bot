@@ -1,0 +1,37 @@
+# M Bot
+
+M Bot is a Telegram bot developed in Python that helps users manage their expenses. It provides a variety of commands to add, delete, and view expenses.
+
+## Features
+
+- Add a new expense with the `/expense` command.
+- Add an old expense with the `/old_expense` command.
+- Delete the last added expense with the `/delete_last_expense` command.
+- View today's expenses with the `/today_expenses` command.
+- View this week's expenses with the `/weekly_expenses` command.
+- View this month's expenses with the `/monthly_expenses` command.
+- Generate a monthly report with the `/monthly_report` command.
+- Generate a yearly report with the `/yearly_report` command.
+
+## Setup
+
+1. Clone the repository.
+2. Create a new bot on Telegram:
+   - Open the Telegram app and search for the "BotFather" bot.
+   - Start a chat and follow the prompts to create a new bot.
+   - After the bot is created, BotFather will give you a token. This token is used to access the Telegram API.
+3. Install the required dependencies with `pip install -r requirements.txt`.
+4. Set up your environment variables in a `.env` file. You will need to set `TOKEN` to your Telegram bot token that you received from BotFather.
+5. Run the bot with `python main.py`.
+
+## Testing
+
+Tests are located in the `tests.py` file. Run them with `python -m unittest tests.py`.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
