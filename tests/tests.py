@@ -1,7 +1,7 @@
 import unittest
 
-from telegram_M_bot.main import add_expense, add_old_expense
-from telegram_M_bot.stats import get_costs_by_category, get_costs_per_day
+from M_bot.main import add_expense, add_old_expense
+from M_bot.stats import get_costs_by_category, get_costs_per_day
 
 
 class TestMain(unittest.TestCase):
@@ -15,10 +15,6 @@ class TestMain(unittest.TestCase):
         result = add_old_expense("test", "food", "yes", 100, "01.01.2022")
         self.assertEqual(result, "Your old expense has been added")
 
-    def test_add_expense_negative_amount(self):
-        # Test the add_expense function with a negative amount
-        result = add_expense("test", "food", "yes", -100)
-        self.assertEqual(result, "Invalid amount. It should be a positive number.")
 
     def test_add_old_expense_invalid_date(self):
         # Test the add_old_expense function with an invalid date

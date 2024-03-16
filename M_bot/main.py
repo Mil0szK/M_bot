@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from telegram import Update, InputFile
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
 
-from stats import generate_monthly_reports, generate_yearly_reports
+from M_bot.stats import generate_monthly_reports, generate_yearly_reports
 
 load_dotenv()
 TOKEN = os.getenv('TOKEN')
@@ -29,11 +29,21 @@ async def help_command(update: Update, _):
     """
     Handles the help command.
     """
-    await update.message.reply_text("Available commands:\n"
-                                    "-expense:\n"
-                                    "   adds new expense\n"
-                                    "(To check pattern and usage, start command with prefix '/')\n")
-
+    help_text = """
+    Available commands:
+    - /start: Starts the bot
+    - /help: Shows this help message
+    - /expense: Adds a new expense
+    - /delete_last_expense: Deletes the last expense
+    - /monthly_report [month] [year]: Generates a monthly report
+    - /yearly_report [year]: Generates a yearly report
+    - /today_expenses: Shows today's expenses
+    - /weekly_expenses: Shows this week's expenses
+    - /monthly_expenses [month] [year]: Shows this month's expenses
+    - /old_expense (patter like expense with date at the end): Adds an old expense
+    - /expense_help: Shows help for the expense command
+    """
+    await update.message.reply_text(help_text)
 
 async def expense_help(update: Update, _):
     """
@@ -47,12 +57,6 @@ async def expense_help(update: Update, _):
                                     "today_expenses, weekly_expenses, monthly_expenses\n"
                                     "monthly_report, yearly_report\n")
 
-
-async def custom_command(update: Update, _):
-    """
-    Handles the custom command.
-    """
-    await update.message.reply_text("This is custom command!")
 
 
 def add_expense(name: str, category: str, shared: str, amount: float):
@@ -224,7 +228,6 @@ async def old_expense_command(update: Update, _):
         expense_date = processed.split()[-1]
         add_old_expense(name, processed.split()[1], processed.split()[-3], int(processed.split()[-2]), expense_date)
     except Exception as e:
-        print("CO SIE DZIEJE", e)
         return await update.message.reply_text("Something went wrong with adding your old expense")
     return await update.message.reply_text("Your old expense has been added")
 
@@ -281,7 +284,6 @@ if __name__ == "__main__":
     # Commands
     app.add_handler(CommandHandler('start', start_command))
     app.add_handler(CommandHandler('help', help_command))
-    app.add_handler(CommandHandler('custom', custom_command))
     app.add_handler(CommandHandler('expense', expense_command))
     app.add_handler(CommandHandler('delete_last_expense', delete_last_expense))
     app.add_handler(CommandHandler('monthly_report', monthly_report_command))
