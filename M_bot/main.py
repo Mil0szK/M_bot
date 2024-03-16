@@ -58,7 +58,6 @@ async def expense_help(update: Update, _):
                                     "monthly_report, yearly_report\n")
 
 
-
 def add_expense(name: str, category: str, shared: str, amount: float):
     """
     Adds a new expense.

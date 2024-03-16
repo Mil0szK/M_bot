@@ -273,9 +273,3 @@ def generate_monthly_reports(month, year):
     doc.save('monthly_reports.docx')
 
     print("Monthly reports generated and saved in 'monthly_reports.docx'")
-
-
-if __name__ == "__main__":
-    conn = sqlite3.connect('../data/expenses.db')
-    c = conn.cursor()
-    generate_yearly_reports(2024)
