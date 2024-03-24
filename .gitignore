@@ -17,3 +17,6 @@ __pycache__/
 # OS related
 .DS_Store
 Thumbs.db
+
+
+.idea/
