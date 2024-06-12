@@ -62,6 +62,8 @@ def add_expense(name: str, category: str, shared: str, amount: float):
     """
     Adds a new expense.
     """
+    if amount <= 0:
+        return "Amount must be greater than 0"
     category_mapping = {
         "food": "food",
         "cosmetics": "cosmetics",
@@ -167,7 +169,6 @@ async def send_file(update: Update, _, filename: str):
     with open(filename, 'rb') as f:
         await _.bot.send_document(chat_id=update.message.chat_id, document=InputFile(f))
 
-    # Remove the file after sending it
     os.remove(filename)
 
 
@@ -262,6 +263,8 @@ async def handle_message(update: Update, _):
 
 
 if __name__ == "__main__":
+    if not os.path.exists('data'):
+        os.makedirs('data')
     conn = sqlite3.connect('data/expenses.db')
     c = conn.cursor()
     c.execute("""CREATE TABLE IF NOT EXISTS expenses (

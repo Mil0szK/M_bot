@@ -10,6 +10,11 @@ class TestMain(unittest.TestCase):
         result = add_expense("test", "food", "yes", 100)
         self.assertEqual(result, "Your expense has been added")
 
+    def test_add_expense_invalid(self):
+        # Test the add_expense function
+        result = add_expense("test", "food", "yes", -100)
+        self.assertEqual(result, "Amount must be greater than 0")
+
     def test_add_old_expense(self):
         # Test the add_old_expense function
         result = add_old_expense("test", "food", "yes", 100, "01.01.2022")
